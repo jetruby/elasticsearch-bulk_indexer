@@ -1,0 +1,29 @@
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+*.bundle
+*.so
+*.o
+*.a
+mkmf.log
+.ruby-version
+.rbenv-gemsets
+
+# Vagrant
+/Cheffile
+/Cheffile.lock
+/Vagrantfile
+/cookbooks
+/custom-cookbooks
+/.vagrant
+
+# Tags
+/.gems_path
+/.tags
+/.tags_sorted_by_file
