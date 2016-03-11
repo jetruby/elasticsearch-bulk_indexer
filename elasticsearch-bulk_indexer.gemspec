@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'elasticsearch-bulk_indexer'
   spec.version       = Elasticsearch::BulkIndexer::VERSION
   spec.authors       = ['Alex Tatarnikov']
-  spec.email         = ['alx.tatarnikov@outlook.com']
+  spec.email         = ['alext@jetruby.com']
   spec.summary       = %q{BulkIndexer for elasticsearch-rails}
   spec.description   = %q{BulkIndexer for elasticsearch-rails}
   spec.homepage      = ''
