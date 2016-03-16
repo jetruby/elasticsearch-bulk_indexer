@@ -10,9 +10,10 @@ module Elasticsearch
         end
 
         class Worker
-          include Sidekiq::Worker
+          # TODO This part should be fixed during implementation of worker logic
+          # include Sidekiq::Worker
+          # sidekiq_options failures: true, retry: true, queue: Elasticsearch::Model::ClassMethodsProxy.queue
 
-          sidekiq_options failures: true, retry: true, queue: Elasticsearch::Model::ClassMethodsProxy.queue
 
           # Performs async reindex
           def perform(klass, ids=nil)

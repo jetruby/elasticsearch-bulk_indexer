@@ -1,9 +1,9 @@
 require 'elasticsearch/bulk_indexer/callbacks'
 require 'active_support/core_ext/module/attribute_accessors'
 
-Dir[File.expand_path('elasticsearch/bulk_indexer/queue_adapter/*.rb'), __FILE__].each { |file| require file }
-Dir[File.expand_path('elasticsearch/bulk_indexer/background_adapter/*.rb'), __FILE__].each { |file| require file }
-Dir[File.expand_path('elasticsearch/bulk_indexer/orm/*.rb'), __FILE__].each { |file| require file }
+Dir[File.expand_path('lib/elasticsearch/bulk_indexer/queue_adapter/*.rb'), __FILE__].each { |file| require file }
+Dir[File.expand_path('lib/elasticsearch/bulk_indexer/background_adapter/*.rb'), __FILE__].each { |file| require file }
+Dir[File.expand_path('lib/elasticsearch/bulk_indexer/orm/*.rb'), __FILE__].each { |file| require file }
 
 module Elasticsearch
   module BulkIndexer
