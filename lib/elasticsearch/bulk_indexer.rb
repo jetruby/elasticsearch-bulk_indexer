@@ -1,8 +1,9 @@
 require 'elasticsearch/bulk_indexer/callbacks'
+require 'active_support/core_ext/module/attribute_accessors'
 
-Dir[Rails.root.join('elasticsearch/bulk_indexer/queue_adapter/*.rb')].each { |file| require file }
-Dir[Rails.root.join('elasticsearch/bulk_indexer/background_adapter/*.rb')].each { |file| require file }
-Dir[Rails.root.join('elasticsearch/bulk_indexer/orm/*.rb')].each { |file| require file }
+Dir[File.expand_path('lib/elasticsearch/bulk_indexer/queue_adapter/*.rb'), __FILE__].each { |file| require file }
+Dir[File.expand_path('lib/elasticsearch/bulk_indexer/background_adapter/*.rb'), __FILE__].each { |file| require file }
+Dir[File.expand_path('lib/elasticsearch/bulk_indexer/orm/*.rb'), __FILE__].each { |file| require file }
 
 module Elasticsearch
   module BulkIndexer
@@ -28,6 +29,11 @@ module Elasticsearch
     # default by default
     mattr_accessor :queue
     @@queue = :default
+
+    # Determines the frequency of worker launching
+    # Should be lambda or proc
+    mattr_accessor :recurrence
+    @@recurrence = lambda { hourly.minutes_of_hour(0, 30) }
 
     # Defines way to setup
     def self.config
