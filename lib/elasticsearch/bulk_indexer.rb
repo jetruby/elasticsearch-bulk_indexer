@@ -32,8 +32,8 @@ module Elasticsearch
 
     # Determines the frequency of worker launching
     # Should be lambda or proc
-    mattr_accessor :reccurence
-    @@reccurence = lambda { hourly.minutes_of_hour(0, 30) }
+    mattr_accessor :recurrence
+    @@recurrence = lambda { hourly.minutes_of_hour(0, 30) }
 
     # Defines way to setup
     def self.config
