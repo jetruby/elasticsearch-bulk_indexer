@@ -4,12 +4,12 @@ module Elasticsearch
       module Redis
         class ClassMethods
           # Adds specified id to the indexing queue
-          def self.add_to_indexing_queue(id)
+          def self.add_to_indexing_queue(redis_key, id)
             $redis.sadd(redis_key, id)
           end
 
           # Removes id from the indexing queue
-          def self.remove_from_indexing_queue(id)
+          def self.remove_from_indexing_queue(redis_key, id)
             $redis.srem(redis_key, id)
           end
 
@@ -18,9 +18,13 @@ module Elasticsearch
             $redis.smembers(redis_key)
           end
 
-          # Defines redis key
-          def self.redis_key
-            "elasticsearch:bulk_indexer:indexing_queue:#{target.name.underscore}"
+          # Defines redis keys
+          def self.upgrade_queue
+            "elasticsearch:bulk_indexer:update_indexing_queue:#{target.name.underscore}"
+          end
+
+          def self.remove_queue
+            "elasticsearch:bulk_indexer:remove_indexing_queue:#{target.name.underscore}"
           end
         end
 
